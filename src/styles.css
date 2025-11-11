@@ -122,4 +122,30 @@ a:hover {
 img.socialIcon {
   height: 30px;
   width: 30px;
+  transition: transform 300ms cubic-bezier(.2,.8,.2,1), filter 300ms;
+  animation: float 6s ease-in-out infinite;
+  will-change: transform, filter;
+  cursor: pointer;
+  filter: drop-shadow(0 6px 12px rgba(78,86,126,0.18));
+}
+
+img.socialIcon:hover {
+  animation-play-state: paused;
+  transform: translateY(-8px) scale(1.08) rotate(-6deg);
+  filter: drop-shadow(0 12px 20px rgba(78,86,126,0.28));
+}
+
+@keyframes float {
+  0%   { transform: translateY(0)   rotate(0deg); }
+  25%  { transform: translateY(-6px) rotate(-2deg); }
+  50%  { transform: translateY(0)   rotate(0deg); }
+  75%  { transform: translateY(6px)  rotate(2deg); }
+  100% { transform: translateY(0)   rotate(0deg); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  img.socialIcon {
+    animation: none;
+    transition: none;
+  }
 }
